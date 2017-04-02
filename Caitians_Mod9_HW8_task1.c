@@ -16,21 +16,38 @@
 #include <string.h>
 
 /* Function Prototypes */
-void Usage(void);
+void Usage(char **info);
 
 /* Main Program */
 int main(int argc, char *argv[])
 {
-
-	Usage();
+	if (argc != 3 )// two input veri.
+	{	
+		Usage(argv); // taking in argv char strings
+	}
+	
 	return 0;
 }
 
 
 /* Function Defenitions */
-void Usage(void)
+void Usage(char **info)
 {
-	printf("Usage: ./task1 <string1> <string2>\n");
-	printf("Program will check to see string2 is found in string1\n");
+	// test strcmp
+	int test = strcmp( (*(info + 1)) , "--help" );
+	//printf("Test value = %d\n",test);
+	if ( test  == 0 ) // first str --help veri.
+	{
+		printf("\n\n ' Help info here '\n");
+		printf("Usage: ./task1 <string1> <string2>\n");
+		printf("Program will check to see string2 is found in string1\n");
+	  }	
+	else
+	{
+		printf("\n\nMissing required parameters. Try typing '--help' in <str1>\n");
+		printf("Usage: ./task1 <string1> <string2>\n");
+		printf("Program will check to see string2 is found in string1\n");
+	}
+	return;
 }
 
