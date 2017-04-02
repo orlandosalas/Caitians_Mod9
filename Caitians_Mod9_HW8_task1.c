@@ -13,17 +13,24 @@
  */
 #include <stdio.h>		/* For Standard I/O */
 #include <stdlib.h>
+#include <string.h>
 
 /* Function Prototypes */
+void Usage(void);
 
 /* Main Program */
 int main(int argc, char *argv[])
 {
 
+	Usage();
 	return 0;
 }
 
 
 /* Function Defenitions */
-
+void Usage(void)
+{
+	printf("Usage: ./task1 <string1> <string2>\n");
+	printf("Program will check to see string2 is found in string1\n");
+}
 
