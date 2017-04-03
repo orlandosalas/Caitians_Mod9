@@ -18,21 +18,21 @@
 #define SIZE 81;
 /* Function Prototypes */
 void Usage(char **info); // input : vector of strings, an array of strings
-char StringIn(char *string1, char *string2); // input: STRING POINTERS
+char *StringIn(char *string1, char *string2); // input: STRING POINTERS
 
 /* Main Program */
 int main(int argc, char *argv[])
 {
 	//char match[];
-	//char *fmatch;
+	char *fmatch; // dereference of address
 	if (argc != 3 )// two input veri.
 	{	
 		Usage(argv); // taking in argv char strings
 		exit(1);
 	}
 	
-	StringIn( argv[1] , argv[2] );
-
+	fmatch = StringIn( argv[1] , argv[2] ); // ret of func is an address of a func
+	printf("String Test: %s \n", fmatch);
 	return 0;
 }
 
@@ -58,12 +58,28 @@ void Usage(char **info)
 	return;
 }
 
-char StringIn(char *string1, char *string2)
+char *StringIn(char *string1, char *string2)
 {
-	char first = '0'; // initialize NULL
-	int ssize = strlen( (string1) );
-	printf("The size of str1 is : %d\n", ssize);
+	char *CharS = '\0'; // initialize NULL
+	int ssize = strlen( (string2) );
+	int test2;	
+	//int test2 = strncmp(string
+	for( int i = 0; i < ssize; i++)
+	{
+		test2 = strncmp( string1, string2, ssize);:
+		if( test2 == 0)
+		{
+			CharS = (*string1);
+			string1++;
+			CharS++;
+		}
+		else
+		{
+			string1++;
+		}
+	}
+	CharS = '\0';
 
-	return first;
+	return CharS;
 	//return *matchAd[];
 }
