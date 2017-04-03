@@ -33,8 +33,19 @@ int main(int argc, char *argv[])
 	else
 	{
 		//exit(2);
-	fmatch = StringIn( argv[1] , argv[2] ); // ret of func is an address of a func
-	printf("String Test: %s \n", fmatch);
+		fmatch = StringIn( argv[1] , argv[2] ); // ret of func is an address of a func
+
+		if( fmatch != '\0')
+		{
+			printf("<%s> found in <%s>\n", argv[2], argv[1]);
+		}
+		else
+		{
+			printf("<%s> NOT found in <%s>\n", argv[2], argv[1]);
+
+		}	
+		printf("Returned String: <%s>\n", fmatch);
+
 	}
 	return 0;
 }
@@ -79,8 +90,6 @@ char *StringIn(char *string1, char *string2)
 	//printf("String 1 val: %s\n", string1);
 	//string1 = string1 + 1;
 	//printf("String 1 val: %s\n", string1);
-	//	while( string1) // while string 1 is true, repeat
-//	{
 	for(int i = 0; i < s1size; i++)
 	{
 		test2 = strncmp( string1, string2, s2size);
@@ -96,5 +105,4 @@ char *StringIn(char *string1, char *string2)
 	//CharS1Address = '\0'; not necessary. You already copied the address of match. Null is included
 
 	return matchAddress;
-	//return *matchAd[];
 }
