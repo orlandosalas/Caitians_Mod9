@@ -30,9 +30,12 @@ int main(int argc, char *argv[])
 		Usage(argv); // taking in argv char strings
 		exit(1);
 	}
-	
+	else
+	{
+		exit(2);
 	fmatch = StringIn( argv[1] , argv[2] ); // ret of func is an address of a func
 	printf("String Test: %s \n", fmatch);
+	}
 	return 0;
 }
 
@@ -40,46 +43,53 @@ int main(int argc, char *argv[])
 /* Function Defenitions */
 void Usage(char **info)
 {
-	// test strcmp
-	int test = strcmp( (*(info + 1)) , "--help" );
-	//printf("Test value = %d\n",test);
-	if ( test  == 0 ) // first str --help veri.
-	{
-		printf("\n\n ' Help info here '\n");
-		printf("Usage: ./task1 <string1> <string2>\n");
-		printf("Program will check to see string2 is found in string1\n");
-	  }	
-	else
+	if( *(info + 1) == 0)
 	{
 		printf("\n\nMissing required parameters. Try typing '--help' in <str1>\n");
 		printf("Usage: ./task1 <string1> <string2>\n");
 		printf("Program will check to see string2 is found in string1\n");
+		exit(1);
+	}
+	// test strcmp
+	int test = strcmp( (*(info + 1)) , "--help" );
+	//printf("Test value = %d\n",test);
+	if ( test  == 0)// first str --help veri.
+	{
+		printf("\n\n ' Help info here '\n");
+		printf("Usage: ./task1 <string1> <string2>\n");
+		printf("Program will check to see string2 is found in string1\n");
+	}
+	else
+	{
+		printf("\n\nToo many parameters. Try typing '--help' in <str1>\n");
+		printf("Usage: ./task1 <string1> <string2>\n");
+		printf("Program will check to see string2 is found in string1\n");
+
 	}
 	return;
 }
 
 char *StringIn(char *string1, char *string2)
 {
-	char *CharS = '\0'; // initialize NULL
-	int ssize = strlen( (string2) );
+	/* Goal: locate address of string1 match */
+	char *matchAddress = '\0'; // initialize NULL
+	int ssize = strlen( string2 );
 	int test2;	
 	//int test2 = strncmp(string
-	for( int i = 0; i < ssize; i++)
+	while( string1 != 0) // while string 1 is true, repeat
 	{
-		test2 = strncmp( string1, string2, ssize);:
+		test2 = strncmp( string1, string2, ssize);
 		if( test2 == 0)
 		{
-			CharS = (*string1);
-			string1++;
-			CharS++;
+			matchAddress = string1; // sets the address of match to CharS
 		}
 		else
 		{
 			string1++;
 		}
 	}
-	CharS = '\0';
+	//CharS1Address = '\0'; not necessary. You already copied the address of match. Null is included
 
-	return CharS;
+	return matchAddress;
 	//return *matchAd[];
 }
