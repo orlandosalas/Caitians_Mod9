@@ -15,17 +15,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define SIZE 81;
 /* Function Prototypes */
-void Usage(char **info);
+void Usage(char **info); // input : vector of strings, an array of strings
+char StringIn(char *string1, char *string2); // input: STRING POINTERS
 
 /* Main Program */
 int main(int argc, char *argv[])
 {
+	//char match[];
+	//char *fmatch;
 	if (argc != 3 )// two input veri.
 	{	
 		Usage(argv); // taking in argv char strings
+		exit(1);
 	}
 	
+	StringIn( argv[1] , argv[2] );
+
 	return 0;
 }
 
@@ -51,3 +58,12 @@ void Usage(char **info)
 	return;
 }
 
+char StringIn(char *string1, char *string2)
+{
+	char first = '0'; // initialize NULL
+	int ssize = strlen( (string1) );
+	printf("The size of str1 is : %d\n", ssize);
+
+	return first;
+	//return *matchAd[];
+}
